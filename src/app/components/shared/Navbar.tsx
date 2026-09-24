@@ -23,14 +23,13 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Middle: Navigation Links */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide">
-          <Link href="/" className="text-[#ccff00] transition-colors">
+          <Link href="/" className=" text-neutral-400 hover:text-white focus:text-[#ccff00] transition-colors">
             Workout
           </Link>
           <Link
             href="/my-plan"
-            className="text-neutral-400 hover:text-white transition-colors"
+            className="text-neutral-400 focus:text-[#ccff00] hover:text-white transition-colors"
           >
             My Plan
           </Link>
