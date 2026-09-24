@@ -5,9 +5,9 @@ import { FaArrowDown } from "react-icons/fa6";
 const Banner = () => {
   return (
     <section className="bg-[#121212] text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-neutral-800 ">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center aspect-video  bg-neutral-900 rounded-xl overflow-hidden border border-neutral-800">
+      <div className="max-w-9xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-10 bg-neutral-900 rounded-xl overflow-hidden border border-neutral-800">
         <div className="lg:col-span-7 space-y-4">
-          <span className="text-[#ccff00] text-xs font-bold tracking-widest uppercase">
+          <span className="text-[#ccff00] text-xs font-bold tracking-widest uppercase text-center lg:text-left">
             WORKOUT LIBRARY
           </span>
 
