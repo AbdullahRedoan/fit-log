@@ -58,7 +58,6 @@ const WorkoutTab = ({ workout }: { workout: IWorkout }) => {
           </div>
         </div>
       </div>
-      {/* Right: Action Buttons */}
       <div className="flex items-center gap-2 w-full md:w-auto justify-end border-t md:border-t-0 pt-3 md:pt-0 border-neutral-800">
         <Link href={`/workout/${id}`}>
           <button className="inline-flex items-center gap-1.5 bg-neutral-800 hover:bg-neutral-700 text-white px-3 py-2 rounded-md text-xs font-semibold transition-colors cursor-pointer">

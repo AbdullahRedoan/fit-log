@@ -71,7 +71,7 @@ const MyPlanPage = () => {
         </div>
 
         <div className="min-h-50 bg-neutral-900 border border-dashed border-neutral-800 rounded-xl p-4 sm:p-5 space-y-4">
-          {myWorkouts && myWorkouts.length > 0 ? (
+          {(activeButton === "today" ? myWorkouts : savedWorkouts).length > 0 ? (
             <div>
               {
                 activeButton === "today" ?

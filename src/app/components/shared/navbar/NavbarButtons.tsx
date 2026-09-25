@@ -2,17 +2,18 @@
 import { WorkoutContext } from "@/app/context/WorkoutContext";
 import Link from "next/link";
 import { useContext } from "react";
+import { usePathname } from "next/navigation";
 
 const NavbarButtons = () => {
   const { activeNavButton, setActiveNavButton } = useContext(WorkoutContext);
+  const pathName = usePathname();
   return (
     <nav className="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide">
       <Link
-        onClick={() => setActiveNavButton("workout")}
         href="/"
         className={`${
-            activeNavButton === "workout" ?
-            "text-[#ccff00] hover:opacity-90"
+            pathName === '/' ?
+            "text-[#ccff00] hover:opacity-90 bg-[#ccff0030] py-1 px-2 rounded-2xl"
             :
             "text-neutral-400 hover:text-white"
         } transition-colors`}
@@ -20,11 +21,10 @@ const NavbarButtons = () => {
         Workout
       </Link>
       <Link
-        onClick={() => setActiveNavButton("my-plan")}
         href="/my-plan"
          className={`${
-            activeNavButton === "my-plan" ?
-            "text-[#ccff00] hover:opacity-90"
+            pathName === "/my-plan" ?
+            "text-[#ccff00] hover:opacity-90 bg-[#ccff0030] py-1 px-2 rounded-2xl"
             :
             "text-neutral-400 hover:text-white"
         } transition-colors`}
