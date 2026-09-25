@@ -5,7 +5,7 @@ import WorkoutTab from "./WorkoutTab";
 import Link from "next/link";
 
 const MyPlanPage = () => {
-  const { myWorkouts, savedWorkouts } = useContext(WorkoutContext);
+  const { myWorkouts, savedWorkouts, activeButton, setActiveButton } = useContext(WorkoutContext);
   console.log(myWorkouts);
   let duration = 0;
   let calories = 0;
@@ -62,10 +62,10 @@ const MyPlanPage = () => {
 
         {/* Tabs: Today's Plan / Saved */}
         <div className="flex items-center gap-3 border-b border-neutral-800 pb-4">
-          <button className="bg-[#ccff00] text-black px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-all cursor-pointer">
+          <button onClick={() => setActiveButton("today")} className={`  border border-neutral-800 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-all cursor-pointer ${activeButton === "today" ? "bg-[#ccff00] text-black hover:opacity-90" : "bg-neutral-900 text-neutral-400 hover:text-white"}`}>
             Today&apos;s Plan ({myWorkouts.length})
           </button>
-          <button className="bg-neutral-900 text-neutral-400 hover:text-white border border-neutral-800 px-5 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all cursor-pointer">
+          <button onClick={() => setActiveButton("saved")} className={`  border border-neutral-800 px-5 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all cursor-pointer ${activeButton === "saved" ? "bg-[#ccff00] text-black hover:opacity-90" : "bg-neutral-900 text-neutral-400 hover:text-white"}`}>
             Saved ({savedWorkouts.length})
           </button>
         </div>
@@ -73,7 +73,16 @@ const MyPlanPage = () => {
         <div className="min-h-50 bg-neutral-900 border border-dashed border-neutral-800 rounded-xl p-4 sm:p-5 space-y-4">
           {myWorkouts && myWorkouts.length > 0 ? (
             <div>
-              {myWorkouts.map(workout => <WorkoutTab workout ={workout} key={workout.id}></WorkoutTab>)}
+              {
+                activeButton === "today" ?
+                <div>
+                  {myWorkouts.map(workout => <WorkoutTab workout ={workout} key={workout.id}></WorkoutTab>)}
+                </div>
+                :
+                <div>
+                  {savedWorkouts.map(workout => <WorkoutTab workout ={workout} key={workout.id}></WorkoutTab>)}
+                </div>
+              }
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center text-center py-15 px-4 space-y-4">
