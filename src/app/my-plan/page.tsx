@@ -15,18 +15,19 @@ const MyPlanPage = () => {
         </div>
 
         {/* Metrics Summary Row (3 Stat Cards) */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-neutral-900 border border-neutral-800 rounded-xl p-4 sm:p-5 divide-x divide-neutral-700">
           {/* Stat 1: Exercises */}
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-5 flex flex-col justify-between">
+          <div className="flex flex-col justify-between">
             <span className="text-neutral-400 text-xs font-semibold uppercase tracking-wider">
               Exercises
             </span>
-            <span className="text-3xl sm:text-4xl font-black text-white mt-2">
+            <span className="text-3xl sm:text-4xl font-black text-[#ccff00] mt-2">
               2
             </span>
           </div>
           {/* Stat 2: Minutes */}
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-5 flex flex-col justify-between">
+          <div className="flex flex-col justify-between">
+            
             <span className="text-neutral-400 text-xs font-semibold uppercase tracking-wider">
               Minutes
             </span>
@@ -35,7 +36,7 @@ const MyPlanPage = () => {
             </span>
           </div>
           {/* Stat 3: Calories */}
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-5 flex flex-col justify-between">
+          <div className="flex flex-col justify-between">
             <span className="text-neutral-400 text-xs font-semibold uppercase tracking-wider">
               Calories
             </span>
