@@ -6,7 +6,6 @@ import { WorkoutContext } from "../context/WorkoutContext";
 import { toast } from "react-toastify";
 
 const TodayButton = ({ workout }: { workout: IWorkout }) => {
-  console.log(workout);
   const { myWorkouts, setMyWorkouts } = useContext(WorkoutContext);
   const handleAddToToday = () => {
     if (myWorkouts.some((w) => w.id === workout.id)) {
