@@ -1,5 +1,5 @@
+import Library from "./Library";
 import SortBy from "./SortBy";
-import WorkoutCard from "./WorkoutCard";
 import { IWorkout } from "@/types/workout.type";
 
 const getWorkouts = async () => {
@@ -27,12 +27,7 @@ const Workouts = async () => {
         </div>
         <SortBy></SortBy>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 sm:p-6 lg:p-8">
-        {workouts.map((workout: IWorkout) => {
-          return <WorkoutCard key={workout.id} workout={workout} />;
-        })}
-      </div>
+      <Library workoutsData = {workouts}></Library>
     </section>
   );
 };
