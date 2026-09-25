@@ -1,6 +1,19 @@
-import React from "react";
+"use client";
+import React, { useContext } from "react";
+import { WorkoutContext } from "../context/WorkoutContext";
 
 const MyPlanPage = () => {
+  const { myWorkouts } = useContext(WorkoutContext);
+  console.log(myWorkouts);
+  let duration = 0;
+  let calories = 0;
+  {
+    myWorkouts.map((w) => {
+      duration += Number(w.duration);
+      calories += Number(w.caloriesBurned)
+    });
+  }
+
   return (
     <div className="bg-[#121212] text-white min-h-screen py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-9xl mx-auto space-y-8">
@@ -22,17 +35,16 @@ const MyPlanPage = () => {
               Exercises
             </span>
             <span className="text-3xl sm:text-4xl font-black text-[#ccff00] mt-2">
-              2
+              {myWorkouts.length}
             </span>
           </div>
           {/* Stat 2: Minutes */}
           <div className="flex flex-col justify-between">
-            
             <span className="text-neutral-400 text-xs font-semibold uppercase tracking-wider">
               Minutes
             </span>
             <span className="text-3xl sm:text-4xl font-black text-white mt-2">
-              50
+              {duration}
             </span>
           </div>
           {/* Stat 3: Calories */}
@@ -41,7 +53,7 @@ const MyPlanPage = () => {
               Calories
             </span>
             <span className="text-3xl sm:text-4xl font-black text-white mt-2">
-              360
+              {calories}
             </span>
           </div>
         </div>
