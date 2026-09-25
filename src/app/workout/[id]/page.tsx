@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { FaCalendarPlus } from "react-icons/fa";
-import { FaBookmark } from "react-icons/fa6";
+import TodayButton from "../TodayButton";
+import LaterButton from "../LaterButton";
+import { IWorkout } from "@/types/workout.type";
 
 interface IWorkoutDetailsPageProps {
   params: {
@@ -16,7 +17,7 @@ const workoutDetails = async (id: string) => {
 
 const WorkoutDetailsPage = async ({ params }: IWorkoutDetailsPageProps) => {
   const { id } = await params;
-  const workout = await workoutDetails(id);
+  const workout : IWorkout = await workoutDetails(id);
   const {
     name,
     image,
@@ -138,16 +139,8 @@ const WorkoutDetailsPage = async ({ params }: IWorkoutDetailsPageProps) => {
 
           {/* Call-to-Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
-            {/* Primary Button */}
-            <button className="inline-flex items-center justify-center gap-2 bg-[#ccff00] text-black px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:opacity-90 transition-opacity shadow-sm cursor-pointer">
-              <FaCalendarPlus className="w-4 h-4 stroke-3" />
-              <span>Add to today&apos;s plan</span>
-            </button>
-
-            <button className="inline-flex items-center justify-center gap-2 border border-neutral-700 text-white px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:border-neutral-500 hover:bg-neutral-900 transition-all cursor-pointer">
-              <FaBookmark className="w-4 h-4" />
-              <span>Save for later</span>
-            </button>
+            <TodayButton workout={workout}></TodayButton>
+            <LaterButton workout = {workout}></LaterButton>
           </div>
         </div>
       </div>
