@@ -1,11 +1,8 @@
 "use client";
-import { WorkoutContext } from "@/app/context/WorkoutContext";
 import Link from "next/link";
-import { useContext } from "react";
 import { usePathname } from "next/navigation";
 
 const NavbarButtons = () => {
-  const { activeNavButton, setActiveNavButton } = useContext(WorkoutContext);
   const pathName = usePathname();
   return (
     <nav className="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide">

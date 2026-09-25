@@ -12,8 +12,8 @@ interface IWorkoutContext {
     setIsDone:React.Dispatch<React.SetStateAction<IWorkout[]>>
     activeButton: string;
     setActiveButton: React.Dispatch<React.SetStateAction<string>>
-    activeNavButton: string
-    setActiveNavButton: React.Dispatch<React.SetStateAction<string>>
+    sortBy: string
+    setSortBy: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const WorkoutContext = createContext<IWorkoutContext>({
@@ -25,8 +25,8 @@ export const WorkoutContext = createContext<IWorkoutContext>({
     setIsDone: () => {},
     activeButton: "today",
     setActiveButton: () => {},
-    activeNavButton: "workouts",
-    setActiveNavButton: () => {}
+    sortBy: "duration",
+    setSortBy: () => {}
 });
 
 
@@ -35,7 +35,7 @@ const WorkoutProvider = ({ children }: { children: React.ReactNode }) => {
     const [savedWorkouts, setSavedWorkouts] = useState<IWorkout[]>([]);
     const [isDone, setIsDone] = useState<IWorkout[]>([]);
     const [activeButton, setActiveButton] = useState<string>("today")
-    const [activeNavButton, setActiveNavButton] = useState<string>("workout")
+    const [sortBy, setSortBy] = useState("duration")
 
     const sharedData = {
         myWorkouts,
@@ -46,8 +46,8 @@ const WorkoutProvider = ({ children }: { children: React.ReactNode }) => {
         setIsDone,
         activeButton,
         setActiveButton,
-        activeNavButton,
-        setActiveNavButton
+        sortBy,
+        setSortBy
     }
 
     return <WorkoutContext.Provider value={sharedData}>
