@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/shared/Navbar";
 import WorkoutProvider from "./context/WorkoutContext";
+import { Bounce, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +31,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <WorkoutProvider>
           <Navbar></Navbar>
           {children}
+          <ToastContainer
+            position="bottom-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+            transition={Bounce}
+          />
         </WorkoutProvider>
       </body>
     </html>
