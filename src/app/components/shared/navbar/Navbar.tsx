@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo.png";
+import { useContext } from "react";
+import { WorkoutContext } from "@/app/context/WorkoutContext";
+import NavbarButtons from "./NavbarButtons";
 
 
 const Navbar = () => {
@@ -23,17 +26,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide">
-          <Link href="/" className=" text-neutral-400 hover:text-white focus:text-[#ccff00] transition-colors">
-            Workout
-          </Link>
-          <Link
-            href="/my-plan"
-            className="text-neutral-400 focus:text-[#ccff00] hover:text-white transition-colors"
-          >
-            My Plan
-          </Link>
-        </nav>
+        <NavbarButtons></NavbarButtons>
 
         {/* Right-side Status Badges (Counters) */}
         <div className="flex items-center gap-3">

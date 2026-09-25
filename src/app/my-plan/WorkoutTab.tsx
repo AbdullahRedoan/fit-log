@@ -42,7 +42,7 @@ const WorkoutTab = ({ workout }: { workout: IWorkout }) => {
             {name}
           </h3>
           <p className="text-neutral-400 text-xs">{equipment}</p>
-          <div className="pt-2 mt-auto flex items-center justify-start gap-5 text-xs text-neutral-300">
+          <div className="pt-2 mt-auto flex flex-col md:flex-row md:items-center justify-start gap-5 text-xs text-neutral-300">
             <div className="flex items-center gap-1">
               <FiClock className="w-3.5 h-3.5 text-[#ccff00]" />
               <span>{duration} min</span>

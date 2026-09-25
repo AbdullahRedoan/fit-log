@@ -12,6 +12,8 @@ interface IWorkoutContext {
     setIsDone:React.Dispatch<React.SetStateAction<IWorkout[]>>
     activeButton: string;
     setActiveButton: React.Dispatch<React.SetStateAction<string>>
+    activeNavButton: string
+    setActiveNavButton: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const WorkoutContext = createContext<IWorkoutContext>({
@@ -22,7 +24,9 @@ export const WorkoutContext = createContext<IWorkoutContext>({
     isDone: [],
     setIsDone: () => {},
     activeButton: "today",
-    setActiveButton: () => {}
+    setActiveButton: () => {},
+    activeNavButton: "workouts",
+    setActiveNavButton: () => {}
 });
 
 
@@ -30,7 +34,8 @@ const WorkoutProvider = ({ children }: { children: React.ReactNode }) => {
     const [myWorkouts, setMyWorkouts] = useState<IWorkout[]>([]);
     const [savedWorkouts, setSavedWorkouts] = useState<IWorkout[]>([]);
     const [isDone, setIsDone] = useState<IWorkout[]>([]);
-    const [activeButton, setActiveButton] = useState("today")
+    const [activeButton, setActiveButton] = useState<string>("today")
+    const [activeNavButton, setActiveNavButton] = useState<string>("workout")
 
     const sharedData = {
         myWorkouts,
@@ -40,7 +45,9 @@ const WorkoutProvider = ({ children }: { children: React.ReactNode }) => {
         isDone, 
         setIsDone,
         activeButton,
-        setActiveButton
+        setActiveButton,
+        activeNavButton,
+        setActiveNavButton
     }
 
     return <WorkoutContext.Provider value={sharedData}>
