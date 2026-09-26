@@ -10,9 +10,13 @@ interface IWorkoutDetailsPageProps {
 }
 
 const workoutDetails = async (id: string) => {
-  const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`);
+try{
+   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/fitlog/${id}`);
   const data = await res.json();
   return data;
+ }catch{
+  return [];
+ }
 };
 
 const WorkoutDetailsPage = async ({ params }: IWorkoutDetailsPageProps) => {
@@ -35,7 +39,7 @@ const WorkoutDetailsPage = async ({ params }: IWorkoutDetailsPageProps) => {
   return (
     <div className="bg-[#121212] text-white min-h-screen py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-9xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Side — Visual/Media (Two-column layout matching design) */}
+        
         <div className="lg:col-span-6 w-full">
           <div className="w-full aspect-square sm:aspect-4/3 lg:aspect-square bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-800 shadow-xl relative flex items-center justify-center">
             <Image
@@ -48,9 +52,7 @@ const WorkoutDetailsPage = async ({ params }: IWorkoutDetailsPageProps) => {
           </div>
         </div>
 
-        {/* Right Side — Sections */}
         <div className="lg:col-span-6 space-y-6">
-          {/* Title & Subtitle/Description */}
           <div className="space-y-2">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight uppercase text-white font-sans">
               {name}
@@ -60,7 +62,6 @@ const WorkoutDetailsPage = async ({ params }: IWorkoutDetailsPageProps) => {
             </p>
           </div>
 
-          {/* Category Tags */}
           <div className="flex items-center gap-2">
             <span className="flex gap-2">
               {muscleGroups.map((group: string) => (
@@ -74,7 +75,7 @@ const WorkoutDetailsPage = async ({ params }: IWorkoutDetailsPageProps) => {
             </span>
           </div>
 
-          {/* Key Specs Table / Panel */}
+ 
           <div className="bg-neutral-900 border border-neutral-800 rounded-xl overflow-hidden divide-y divide-neutral-800 text-sm">
             <div className="grid grid-cols-2 px-4 py-3">
               <span className="text-neutral-400 font-medium">EQUIPMENT</span>
@@ -120,7 +121,6 @@ const WorkoutDetailsPage = async ({ params }: IWorkoutDetailsPageProps) => {
             </div>
           </div>
 
-          {/* Instructions Section */}
           <div className="space-y-3 pt-2">
             <h3 className="text-xs font-bold tracking-widest uppercase text-neutral-400">
               INSTRUCTIONS
@@ -136,8 +136,6 @@ const WorkoutDetailsPage = async ({ params }: IWorkoutDetailsPageProps) => {
               ))}
             </ol>
           </div>
-
-          {/* Call-to-Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
             <TodayButton workout={workout}></TodayButton>
             <LaterButton workout = {workout}></LaterButton>

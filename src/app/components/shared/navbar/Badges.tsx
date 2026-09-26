@@ -17,7 +17,6 @@ const Badges = () => {
         </span>
       </Link>
 
-      {/* Saved Badge (Outline/border only) */}
       <Link
         href="/my-plan"
         className="flex items-center gap-2 border border-neutral-700 text-white px-2.5 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-medium tracking-wide hover:border-neutral-500 transition-colors"

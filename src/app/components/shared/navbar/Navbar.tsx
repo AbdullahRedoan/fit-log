@@ -9,7 +9,6 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 bg-[#121212] border-b border-neutral-800 text-white">
       <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Left: Brand Logo */}
         <div className="flex items-center gap-2">
           <Link
             href="/"

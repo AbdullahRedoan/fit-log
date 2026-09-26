@@ -9,11 +9,11 @@ const TodayButton = ({ workout }: { workout: IWorkout }) => {
   const { myWorkouts, setMyWorkouts } = useContext(WorkoutContext);
   const handleAddToToday = () => {
     if (myWorkouts.some((w) => w.id === workout.id)) {
-      toast.error("Workout already added to today's plan!");
+      toast.error(`${workout.name} is already in today's plan!`);
       return;
     } else {
       setMyWorkouts([...myWorkouts, workout]);
-      toast.success("Workout added to today's plan!");
+      toast.success(`${workout.name} is added to today's plan!`);
     }
   };
 

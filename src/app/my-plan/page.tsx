@@ -6,7 +6,6 @@ import Link from "next/link";
 
 const MyPlanPage = () => {
   const { myWorkouts, savedWorkouts, activeButton, setActiveButton } = useContext(WorkoutContext);
-  console.log(myWorkouts);
   let duration = 0;
   let calories = 0;
   {
@@ -19,7 +18,7 @@ const MyPlanPage = () => {
   return (
     <div className="bg-[#121212] text-white min-h-screen py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-9xl mx-auto space-y-8">
-        {/* Header & Subtitle */}
+       
         <div className="space-y-1">
           <h1 className="text-2xl sm:text-3xl font-black tracking-tight uppercase">
             MY PLAN
@@ -29,9 +28,7 @@ const MyPlanPage = () => {
           </p>
         </div>
 
-        {/* Metrics Summary Row (3 Stat Cards) */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-neutral-900 border border-neutral-800 rounded-xl p-4 sm:p-5 divide-x divide-neutral-700">
-          {/* Stat 1: Exercises */}
           <div className="flex flex-col justify-between">
             <span className="text-neutral-400 text-xs font-semibold uppercase tracking-wider">
               Exercises
@@ -40,7 +37,6 @@ const MyPlanPage = () => {
               {myWorkouts.length}
             </span>
           </div>
-          {/* Stat 2: Minutes */}
           <div className="flex flex-col justify-between">
             <span className="text-neutral-400 text-xs font-semibold uppercase tracking-wider">
               Minutes
@@ -49,7 +45,6 @@ const MyPlanPage = () => {
               {duration}
             </span>
           </div>
-          {/* Stat 3: Calories */}
           <div className="flex flex-col justify-between">
             <span className="text-neutral-400 text-xs font-semibold uppercase tracking-wider">
               Calories
@@ -60,7 +55,6 @@ const MyPlanPage = () => {
           </div>
         </div>
 
-        {/* Tabs: Today's Plan / Saved */}
         <div className="flex items-center gap-3 border-b border-neutral-800 pb-4">
           <button onClick={() => setActiveButton("today")} className={`  border border-neutral-800 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-all cursor-pointer ${activeButton === "today" ? "bg-[#ccff00] text-black hover:opacity-90" : "bg-neutral-900 text-neutral-400 hover:text-white"}`}>
             Today&apos;s Plan ({myWorkouts.length})
@@ -90,7 +84,12 @@ const MyPlanPage = () => {
                 NOTHING HERE YET
               </h2>
               <p className="text-neutral-400 text-sm sm:text-base max-w-sm">
-                Browse the library and add a lift to get today moving.
+                {
+                  activeButton === "today" ?
+                  "Browse the library and add a lift to get today moving."
+                  :
+                  "Browse the library and save workouts to see them in saved workouts."
+                }
               </p>
               <div className="pt-2">
                 <Link

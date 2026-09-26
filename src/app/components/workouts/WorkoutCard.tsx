@@ -20,28 +20,21 @@ const WorkoutCard = ({ workout }: { workout: IWorkout }) => {
       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
     />
   </div>
-
-  {/* Card Content */}
   <div className="p-4 sm:p-5 flex flex-col grow space-y-3">
     
-    {/* Category tag pill */}
     <div>
       <span className = "flex gap-2">
         {muscleGroups.map((group) => <span className="inline-block bg-[#ccff00] text-black  text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full" key={group}>{group}</span>)}
       </span>
     </div>
 
-    {/* Workout Name */}
     <h3 className="text-base sm:text-lg font-bold tracking-wide uppercase text-white group-hover:text-[#ccff00] transition-colors line-clamp-1">
       {name}
     </h3>
 
-    {/* Equipment Line */}
     <p className="text-neutral-400 text-xs line-clamp-1">
       {equipment}
     </p>
-
-    {/* Stats Row with Icons */}
     <div className="pt-2 mt-auto border-t border-neutral-800 flex items-center justify-start gap-5 text-xs text-neutral-300">
       <div className="flex items-center gap-1">
         <FiClock className="w-3.5 h-3.5 text-gray-300" />

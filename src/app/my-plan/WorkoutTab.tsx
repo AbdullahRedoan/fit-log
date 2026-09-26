@@ -18,7 +18,7 @@ const WorkoutTab = ({ workout }: { workout: IWorkout }) => {
   } = workout;
   return (
     <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 hover:border-neutral-700 transition-all">
-      {/* Left: Thumbnail & Info */}
+      
       <div className="flex items-center gap-4 w-full md:w-auto">
         <div className="w-16 h-16 sm:w-20 sm:h-20 bg-neutral-950 rounded-lg overflow-hidden shrink-0 border border-neutral-800">
           <Image

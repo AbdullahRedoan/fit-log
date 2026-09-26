@@ -3,9 +3,13 @@ import SortBy from "./SortBy";
 import { IWorkout } from "@/types/workout.type";
 
 const getWorkouts = async () => {
-  const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
+ try{
+   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/fitlog`);
   const data = await res.json();
   return data as IWorkout[];
+ }catch{
+  return [];
+ }
 };
 const Workouts = async () => {
   const workouts = await getWorkouts();

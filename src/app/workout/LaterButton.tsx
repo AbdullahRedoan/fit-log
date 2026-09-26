@@ -9,11 +9,11 @@ const LaterButton = ({ workout }: { workout: IWorkout }) => {
   const { savedWorkouts, setSavedWorkouts } = useContext(WorkoutContext);
   const handleAddToSaved = () => {
     if (savedWorkouts.some((w) => w.id === workout.id)) {
-      toast.error("Workout already added to saved workouts");
+      toast.error(`${workout.name} is already in saved workouts.`);
       return;
     } else {
       setSavedWorkouts([...savedWorkouts, workout]);
-      toast.success("Workout added to saved workouts");
+      toast.success(`${workout.name} is saved successfully.`);
     }
   };
 
