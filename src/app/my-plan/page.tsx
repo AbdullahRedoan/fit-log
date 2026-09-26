@@ -5,20 +5,23 @@ import WorkoutTab from "./WorkoutTab";
 import Link from "next/link";
 
 const MyPlanPage = () => {
-  const { myWorkouts, savedWorkouts, activeButton, setActiveButton } = useContext(WorkoutContext);
+  const { myWorkouts, savedWorkouts, activeButton, setActiveButton } =
+    useContext(WorkoutContext);
   let duration = 0;
   let calories = 0;
-  {
-    myWorkouts.map((w) => {
-      duration += Number(w.duration);
-      calories += Number(w.caloriesBurned);
+  
+    const targetWorkouts =
+      activeButton === "today" ? myWorkouts : savedWorkouts;
+
+    targetWorkouts.forEach((w) => {
+      duration += Number(w.duration) || 0;
+      calories += Number(w.caloriesBurned) || 0;
     });
-  }
+  
 
   return (
     <div className="bg-[#121212] text-white min-h-screen py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-9xl mx-auto space-y-8">
-       
         <div className="space-y-1">
           <h1 className="text-2xl sm:text-3xl font-black tracking-tight uppercase">
             MY PLAN
@@ -34,7 +37,9 @@ const MyPlanPage = () => {
               Exercises
             </span>
             <span className="text-3xl sm:text-4xl font-black text-[#ccff00] mt-2">
-              {myWorkouts.length}
+              {activeButton === "today"
+                ? myWorkouts.length
+                : savedWorkouts.length}
             </span>
           </div>
           <div className="flex flex-col justify-between">
@@ -56,27 +61,37 @@ const MyPlanPage = () => {
         </div>
 
         <div className="flex items-center gap-3 border-b border-neutral-800 pb-4">
-          <button onClick={() => setActiveButton("today")} className={`  border border-neutral-800 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-all cursor-pointer ${activeButton === "today" ? "bg-[#ccff00] text-black hover:opacity-90" : "bg-neutral-900 text-neutral-400 hover:text-white"}`}>
+          <button
+            onClick={() => setActiveButton("today")}
+            className={`  border border-neutral-800 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-all cursor-pointer ${activeButton === "today" ? "bg-[#ccff00] text-black hover:opacity-90" : "bg-neutral-900 text-neutral-400 hover:text-white"}`}
+          >
             Today&apos;s Plan ({myWorkouts.length})
           </button>
-          <button onClick={() => setActiveButton("saved")} className={`  border border-neutral-800 px-5 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all cursor-pointer ${activeButton === "saved" ? "bg-[#ccff00] text-black hover:opacity-90" : "bg-neutral-900 text-neutral-400 hover:text-white"}`}>
+          <button
+            onClick={() => setActiveButton("saved")}
+            className={`  border border-neutral-800 px-5 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all cursor-pointer ${activeButton === "saved" ? "bg-[#ccff00] text-black hover:opacity-90" : "bg-neutral-900 text-neutral-400 hover:text-white"}`}
+          >
             Saved ({savedWorkouts.length})
           </button>
         </div>
 
         <div className="min-h-50 bg-neutral-900 border border-dashed border-neutral-800 rounded-xl p-4 sm:p-5 space-y-4">
-          {(activeButton === "today" ? myWorkouts : savedWorkouts).length > 0 ? (
+          {(activeButton === "today" ? myWorkouts : savedWorkouts).length >
+          0 ? (
             <div>
-              {
-                activeButton === "today" ?
+              {activeButton === "today" ? (
                 <div>
-                  {myWorkouts.map(workout => <WorkoutTab workout ={workout} key={workout.id}></WorkoutTab>)}
+                  {myWorkouts.map((workout) => (
+                    <WorkoutTab workout={workout} key={workout.id}></WorkoutTab>
+                  ))}
                 </div>
-                :
+              ) : (
                 <div>
-                  {savedWorkouts.map(workout => <WorkoutTab workout ={workout} key={workout.id}></WorkoutTab>)}
+                  {savedWorkouts.map((workout) => (
+                    <WorkoutTab workout={workout} key={workout.id}></WorkoutTab>
+                  ))}
                 </div>
-              }
+              )}
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center text-center py-15 px-4 space-y-4">
@@ -84,12 +99,9 @@ const MyPlanPage = () => {
                 NOTHING HERE YET
               </h2>
               <p className="text-neutral-400 text-sm sm:text-base max-w-sm">
-                {
-                  activeButton === "today" ?
-                  "Browse the library and add a lift to get today moving."
-                  :
-                  "Browse the library and save workouts to see them in saved workouts."
-                }
+                {activeButton === "today"
+                  ? "Browse the library and add a lift to get today moving."
+                  : "Browse the library and save workouts to see them in saved workouts."}
               </p>
               <div className="pt-2">
                 <Link

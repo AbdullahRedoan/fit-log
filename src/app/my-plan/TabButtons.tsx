@@ -40,7 +40,7 @@ const TabButtons = ({ workout }: { workout: IWorkout }) => {
           className={`inline-flex items-center gap-1.5 bg-[#ccff00] hover:opacity-90 text-black px-3 rounded-md text-xs font-bold transition-opacity cursor-pointer ${isMarkedDone ? "bg-gray-200" : ""}`}
           disabled={isMarkedDone}
         >
-          <span>{!isMarkedDone ? "Mark as Done" : "✓Done"}</span>
+          <span>{!isMarkedDone ? "Mark as Done✓" : "✓Done"}</span>
         </button>
       ) : (
         ""

@@ -7,7 +7,7 @@ const SortBy = () => {
     const {setSortBy} = useContext(WorkoutContext)
     
   return (
-    <div className="flex gap-2 col-span-2 items-center">
+    <div className="flex md:w-full w-9/12 mx-auto gap-2 col-span-2 items-center">
       <h1 className="font-semibold whitespace-nowrap ">Sort by:</h1>
       <select 
       onChange={(e)=> setSortBy(e.target.value as "duration" 
